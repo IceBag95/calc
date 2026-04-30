@@ -186,7 +186,7 @@ double _handle_math_operations(char* math_expression, int level) {
     double x             = res_op_1.result;
 
     // check if the sign of the number was negative and adjust it
-    if (math_expression[-1] == '-' && count_recursion == 1) {
+    if (math_expression[-1] == '-' && level == ADD_SUBTR) {
         x = -x;
     }
 
@@ -236,7 +236,7 @@ double _handle_math_operations(char* math_expression, int level) {
 
         return current_result;
     }
-    else if (next_operator == '-' && level <= ADD_SUBTR && ) {
+    else if (next_operator == '-' && level <= ADD_SUBTR && res_op_1.rest_of_expr_ptr[0] == '(') {
         level = (level + 1) % 4;
         printf("level: %d", level);
         printf("Continue? (y/n) ");
